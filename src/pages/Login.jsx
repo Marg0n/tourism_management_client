@@ -1,6 +1,101 @@
+import { Helmet } from "react-helmet-async";
+import useAuth from './../hooks/useAuth';
+import { Link, useLocation, useNavigate, Navigate } from "react-router-dom";
+import { TfiEye } from "react-icons/tfi";
+import { RxEyeClosed } from "react-icons/rx";
+import { FaGithub } from "react-icons/fa";
+import { FcGoogle } from "react-icons/fc";
+import { useState } from "react";
+import { useForm } from "react-hook-form";
+import { toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
+import Loader from './../components/Loader';
+import 'animate.css';
 
 
 const Login = () => {
+
+    const { signInUser, googleLogin, gitHubLogin, user } = useAuth();
+
+    // custom loader for login
+    const [customLoader, setCustomLoader] = useState(false);
+
+    // password show
+    const [passShow, setPassShow] = useState(false);
+
+    // Navigation
+    const navigate = useNavigate();
+    const location = useLocation();
+    const whereTo = location?.state || '/';
+
+    // React hook form
+    const {
+        register,
+        handleSubmit,
+        formState: { errors },
+    } = useForm()
+
+    const onSubmit = (data) => {
+        const { email, password } = data;
+
+        signInUser(email, password)
+            .then(result => {
+
+                setCustomLoader(true);
+                // console.log(result.user)
+                toast.success("Logged in successful!🎉", { autoClose: 2000, theme: "colored" })
+
+                if (result.user) {
+                    setCustomLoader(false);
+                    navigate(whereTo)
+                }
+
+            })
+            .catch(error => {
+
+                setCustomLoader(false);
+                const errorCode = error.code;
+                // Remove 'auth/' prefix and '-' characters
+                const cleanedErrorCode = errorCode.replace(/^auth\/|-/g, ' ');
+                const words = cleanedErrorCode.split('-');
+                const capitalizedWords = words.map(word => word.charAt(1).toUpperCase() + word.slice(2));
+                const message = capitalizedWords.join(' ');
+                toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
+                
+            })
+    }
+
+    // Navigation handler for all social platform
+    const handleSocialLogin = socialLoginProvider => {
+        socialLoginProvider()
+            .then(result => {
+                if (result.user) {
+                    toast.success("Logged in successful!🎉", { autoClose: 2000, theme: "colored" })
+                    navigate(whereTo)
+                }
+            })
+            .catch(error => {
+                const errorCode = error.code;
+                // Remove 'auth/' prefix and '-' characters
+                const cleanedErrorCode = errorCode.replace(/^auth\/|-/g, ' ');
+                const words = cleanedErrorCode.split('-');
+                const capitalizedWords = words.map(word => word.charAt(1).toUpperCase() + word.slice(2));
+                const message = capitalizedWords.join(' ');
+
+                toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
+                navigate('/login')          
+            })
+    }
+
+    if (customLoader) {
+        return <Loader />;
+    }
+
+    if (user && location?.pathname=='/login' && location?.state == null) {
+        // toast.info(`Dear, ${user?.displayName || user?.email}! You are already Logged in!`, { autoClose: 3000, theme: "colored" });
+        return <Navigate to='/' state={location?.pathname || '/'} />
+    }
+
     return (
         <div className="flex justify-center items-center my-10">
             <Helmet>
@@ -55,7 +150,7 @@ const Login = () => {
                             <Link to='' className="hover:text-rose-500">Forgot Password?</Link>
                         </div>
                     </div>
-                    <button className="btn bg-teal-400 w-full text-center rounded-lg hover:bg-blue-500 hover:text-white border-none animate-pulse hover:animate-none">Log In </button>
+                    <button className="btn bg-primary w-full text-center rounded-lg hover:bg-blue-500 hover:text-white border-none animate__animated animate__pulse animate__infinite hover:animate-none">Log In </button>
                 </form>
 
                 <div className="flex items-center pt-4 space-x-1">

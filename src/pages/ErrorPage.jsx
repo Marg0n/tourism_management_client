@@ -8,11 +8,16 @@ const ErrorPage = () => {
     console.error(error);
 
     return (
-        <div className="flex flex-col gap-6 min-h-screen justify-center items-center bg-rose-100">
+        <div className="flex flex-col gap-6 min-h-screen justify-center items-center bg-base-100">
+            <img
+                src="https://www.svgrepo.com/show/492797/woman-sighing.svg"
+                alt=""
+                className="h-48 object-cover"
+            />
             <h1 className='text-error text-xl lg:text-3xl font-bold'>Oops!</h1>
-            <p className='text-error text-xl lg:text-3xl font-semibold'>Sorry, an unexpected error has occurred.</p>
+            <p className='text-error text-xl lg:text-3xl font-semibold'>Sorry, an unexpected error has occurred!</p>
             <p className='text-error text-xl lg:text-3xl font-semibold'>
-                <i>{error.statusText || error.message}</i>
+                Page: <i>{error.statusText || error.message}</i>
             </p>
             <Link
                 to='/'
