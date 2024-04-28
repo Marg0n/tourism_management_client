@@ -2,7 +2,7 @@ import 'animate.css';
 
 const FooterSection = () => {
     return (
-        <footer className="footer footer-center p-10  text-base-content bg-base-100 font-semibold">
+        <footer className="footer footer-center p-10  text-base-content bg-slate-500 font-semibold">
             <nav className="grid grid-flow-col gap-4">
                 <a className="link link-hover">About us</a>
                 <a className="link link-hover">Contact</a>

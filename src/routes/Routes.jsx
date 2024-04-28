@@ -7,6 +7,7 @@ import MyList from './../pages/MyList';
 import Root from './../Root';
 import Home from './../pages/Home';
 import ErrorPage from "../pages/ErrorPage";
+import PrivateRoute from "../components/PrivateRoute";
 
 
 export const router = createBrowserRouter([
@@ -28,16 +29,20 @@ export const router = createBrowserRouter([
           element: <Register />,
         },
         {
-          path: "/add",
-          element: <AddTouristSpot />,
+          path: "/addTouristSpot",
+          element: <PrivateRoute><AddTouristSpot /></PrivateRoute> ,
         },
         {
-          path: "/all",
+          path: "/allTouristSpot",
           element: <AllTouristSpot />,
         },
         {
           path: "/myList",
-          element: <MyList />,
+          element:<PrivateRoute><MyList /></PrivateRoute> ,
+        },
+        {
+          path: "/about",
+          element: <AllTouristSpot />,
         },
       ],
     },    

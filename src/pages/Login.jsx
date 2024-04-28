@@ -1,16 +1,17 @@
+import 'animate.css';
+import { useState } from "react";
+import { Fade } from 'react-awesome-reveal';
 import { Helmet } from "react-helmet-async";
-import useAuth from './../hooks/useAuth';
-import { Link, useLocation, useNavigate, Navigate } from "react-router-dom";
-import { TfiEye } from "react-icons/tfi";
-import { RxEyeClosed } from "react-icons/rx";
+import { useForm } from "react-hook-form";
 import { FaGithub } from "react-icons/fa";
 import { FcGoogle } from "react-icons/fc";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { RxEyeClosed } from "react-icons/rx";
+import { TfiEye } from "react-icons/tfi";
+import { Link, Navigate, useLocation, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
 import Loader from './../components/Loader';
-import 'animate.css';
+import useAuth from './../hooks/useAuth';
 
 
 const Login = () => {
@@ -61,7 +62,7 @@ const Login = () => {
                 const capitalizedWords = words.map(word => word.charAt(1).toUpperCase() + word.slice(2));
                 const message = capitalizedWords.join(' ');
                 toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
-                
+
             })
     }
 
@@ -83,7 +84,7 @@ const Login = () => {
                 const message = capitalizedWords.join(' ');
 
                 toast.error(`${message}`, { autoClose: 5000, theme: "colored" })
-                navigate('/login')          
+                navigate('/login')
             })
     }
 
@@ -91,7 +92,7 @@ const Login = () => {
         return <Loader />;
     }
 
-    if (user && location?.pathname=='/login' && location?.state == null) {
+    if (user && location?.pathname == '/login' && location?.state == null) {
         // toast.info(`Dear, ${user?.displayName || user?.email}! You are already Logged in!`, { autoClose: 3000, theme: "colored" });
         return <Navigate to='/' state={location?.pathname || '/'} />
     }
@@ -150,7 +151,7 @@ const Login = () => {
                             <Link to='' className="hover:text-rose-500">Forgot Password?</Link>
                         </div>
                     </div>
-                    <button className="btn bg-primary w-full text-center rounded-lg hover:bg-blue-500 hover:text-white border-none animate__animated animate__pulse animate__infinite hover:animate-none">Log In </button>
+                    <button className="btn bg-secondary w-full text-center rounded-lg hover:bg-blue-500 hover:text-white border-none animate-pulse hover:animate-none">Log In </button>
                 </form>
 
                 <div className="flex items-center pt-4 space-x-1">
@@ -173,7 +174,9 @@ const Login = () => {
                     </button>
                 </div>
                 <p className="text-xs text-center sm:px-6 dark:text-gray-600">Don&apos;t have an account?
-                    <Link to='/register' className="underline mx-2 text-blue-600 font-bold font-serif">Sign up</Link>
+                    <Fade cascade damping={0.1} direction="up">
+                        <Link to='/register' className="underline mx-2 text-blue-600 font-bold font-serif animate__animated animate__jello animate__infinite">Sign up</Link>
+                    </Fade>
                 </p>
             </div>
         </div>
