@@ -1,5 +1,6 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../hooks/useAuth";
+import Swal from 'sweetalert2'
 
 
 const AddTouristSpot = () => {
@@ -34,7 +35,19 @@ const AddTouristSpot = () => {
             body: JSON.stringify(newTouristSpot)
         })
             .then(res => res.json())
-            .then(data => { console.log(data) })
+            .then(data => { 
+                console.log(data); 
+                if(data.insertedId){
+                    Swal.fire({
+                        title: 'Success!',
+                        text: 'Added a new Tourist Spot! 🎉',
+                        icon: 'success',
+                        confirmButtonText: 'Cool'
+                      }).then(() => {
+                        form.reset(); // Reset the form fields
+                    });
+                }
+            })
     }
 
     return (

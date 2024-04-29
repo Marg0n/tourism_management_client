@@ -8,6 +8,7 @@ import Root from './../Root';
 import Home from './../pages/Home';
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoute from "../components/PrivateRoute";
+import About from './../components/About';
 
 
 export const router = createBrowserRouter([
@@ -35,6 +36,7 @@ export const router = createBrowserRouter([
         {
           path: "/allTouristSpot",
           element: <AllTouristSpot />,
+          loader: () => fetch('http://localhost:5000/allTouristSpot'),
         },
         {
           path: "/myList",
@@ -42,7 +44,7 @@ export const router = createBrowserRouter([
         },
         {
           path: "/about",
-          element: <AllTouristSpot />,
+          element: <About />,
         },
       ],
     },    
