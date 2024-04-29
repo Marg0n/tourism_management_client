@@ -23,6 +23,7 @@ Resources:
 - [React Awesome Reveal](https://www.npmjs.com/package/react-awesome-reveal)
 - [React Simple Typewriter](https://www.npmjs.com/package/react-simple-typewriter#react-simple-typewriter)
 - [React Tooltip](https://react-tooltip.com/docs)
+- [sweetalert2](https://sweetalert2.github.io/#download)
 
 
 
