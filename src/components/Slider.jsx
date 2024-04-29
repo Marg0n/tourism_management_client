@@ -45,7 +45,7 @@ const Slider = () => {
                 }}
                 >
                     <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                    <div className='absolute top-4 p-6'>
+                    <div className='absolute top-4 p-6 text-base-300'>
                         <div className="text-3xl font-bold">
                             Slide 1
                         </div>

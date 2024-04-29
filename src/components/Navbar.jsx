@@ -63,7 +63,7 @@ const Navbar = () => {
 
     </>;
 
-
+    console.log(user)
 
 
     return (
