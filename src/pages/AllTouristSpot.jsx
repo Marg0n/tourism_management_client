@@ -5,6 +5,7 @@ import { useLoaderData } from "react-router-dom";
 const AllTouristSpot = () => {
 
     const touristSpots = useLoaderData();
+    console.log('AllTouristSpot',touristSpots);
 
     return (
         <div>

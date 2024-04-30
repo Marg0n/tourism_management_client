@@ -8,13 +8,37 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/thumbs';
 import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules';
+import { PropTypes } from 'prop-types';
+import { useTypewriter, Cursor } from 'react-simple-typewriter'
+import { AttentionSeeker } from "react-awesome-reveal";
+
+const Slider = ({ showSliders }) => {
 
 
-const Slider = () => {
+    console.log('southeastAsia', showSliders)
+
+    const [typeEffect] = useTypewriter({
+        words: ['Some Awesome Places!', 'New Places!', 'anywhere in The world!'],
+        loop: {},
+        typeSpeed: 100,
+        deleteSpeed: 40,
+    })
 
 
     return (
         <>
+            <AttentionSeeker effect='flash' >
+                <h1 className='text-3xl font-bold text-center my-10 uppercase'>
+                    You can just Tour to{' '}
+                    <span className='text-rose-500'>{typeEffect}</span>
+
+                    <span className=''>
+                        <Cursor cursorStyle='🖋️' cursorBlinking={false} />
+                    </span>
+
+                </h1>
+            </AttentionSeeker>
+            
             <Swiper
                 style={{
                     '--swiper-navigation-color': '#fff',
@@ -36,66 +60,44 @@ const Slider = () => {
                 loop={true}
                 className="mySwiper"
             >
-                {/* <SwiperSlide>
-                    <img  className=' w-full'src={pic1} alt="" />
-                </SwiperSlide> */}
-                <SwiperSlide
-                style={{
-                    'position': 'relative',
-                }}
-                >
-                    <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-                    <div className='absolute top-4 p-6 text-base-300'>
-                        <div className="text-3xl font-bold">
-                            Slide 1
-                        </div>
-                        <div className="text-xl font-semibold">
-                            Subtitle
-                        </div>
-                        <div className="text-base font-semibold" >
-                            <p>
-                                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
-                                dictum mattis velit, sit amet faucibus felis iaculis nec. Nulla
-                                laoreet justo vitae porttitor porttitor. Suspendisse in sem justo.
-                                Integer laoreet magna nec elit suscipit, ac laoreet nibh euismod.
-                                Aliquam hendrerit lorem at elit facilisis rutrum. Ut at
-                                ullamcorper velit. Nulla ligula nisi, imperdiet ut lacinia nec,
-                                tincidunt ut libero. Aenean feugiat non eros quis feugiat.
-                            </p>
-                        </div>
-                    </div>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-                </SwiperSlide>
-                {/* <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-4.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-5.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-6.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-7.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-8.jpg" />
-                </SwiperSlide>
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-9.jpg" />
-                </SwiperSlide> */}
-                <SwiperSlide>
-                    <img src="https://swiperjs.com/demos/images/nature-10.jpg" />
-                </SwiperSlide>
+                
+                {
+                    showSliders.map(showSlider => {
+                        
+                        return <SwiperSlide
+                            key={showSlider._idx}
+                            style={{
+                                'position': 'relative',
+
+                            }}
+                        >
+                           <img className='min-h-96 w-full' src={showSlider.photo} alt="" />
+                            <div className='absolute bottom-4 right-4 p-6 text-primary font-serif text-right'>
+                                <div className="text-3xl font-bold">
+                                    {showSlider.country}
+                                </div>
+                                <div className="text-xl font-semibold">
+                                    {showSlider.spotName}
+                                </div>
+                                {/* <div className="text-base font-semibold" >
+                                    <p>
+                                        {showSlider.description}
+                                    </p>
+                                </div> */}
+                            </div>
+                        </SwiperSlide>
+                    })
+                }
+
+                
             </Swiper>
 
         </>
     );
 };
+
+Slider.propTypes = {
+    showSliders: PropTypes.array,
+}
 
 export default Slider;

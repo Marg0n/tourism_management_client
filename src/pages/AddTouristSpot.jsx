@@ -36,8 +36,8 @@ const AddTouristSpot = () => {
         })
             .then(res => res.json())
             .then(data => { 
-                console.log(data); 
-                if(data.insertedId){
+                // console.log(data); 
+                if(data?.insertedId){
                     Swal.fire({
                         title: 'Success!',
                         text: 'Added a new Tourist Spot! 🎉',
