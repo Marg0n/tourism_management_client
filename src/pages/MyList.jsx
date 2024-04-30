@@ -20,18 +20,58 @@ const MyList = () => {
         })
     },[])
 
+
+
     return (
         <div>
             <Helmet>
                 <title>Horizon | My List</title>
             </Helmet>
             
-            <div className="grid lg:grid-cols-2 md:grid-cols-1 gap-8 my-12">
+            {/* <div className=" my-12">
                 {
                     items.map((touristSpot, index) => {
                         return <MyListCard key={index} touristSpot={touristSpot}/>
                     })
                 }
+            </div> */}
+            <div className="overflow-x-auto my-12">
+                <table className="table">
+                    {/* head */}
+                    <thead>
+                        <tr>
+                            
+                            <th>Spot Name</th>
+                            <th>Location</th>
+                            <th>Avg. Cost & Visitors</th>
+                            <th>Tour Season</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+
+                    {/* body */}
+                    <tbody>
+                        {/* row  */}
+                        {
+                            items.map((touristSpot, index) => {
+                                return <MyListCard key={index} touristSpot={touristSpot}/>
+                            })
+                        }
+                        
+                    </tbody>
+
+                    {/* foot */}
+                    <tfoot>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Job</th>
+                            <th>Favorite Color</th>
+                            <th></th>
+                        </tr>
+                    </tfoot>
+
+                </table>
             </div>
         </div>
     );
