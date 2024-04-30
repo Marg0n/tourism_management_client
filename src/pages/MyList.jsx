@@ -13,15 +13,28 @@ const MyList = () => {
     const [items, setItems] = useState([]);
     const [control, setControl] = useState(false);
 
+    console.log(user?.email, user?.displayName)
+
 
     // DB connection GET
     useEffect(() => {
-        fetch(`http://localhost:5000/myList/${user?.email}`)
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-                setItems(data);
-            })
+        if (user?.displayName && user?.email == '' || user?.email == 'null '  ) {
+            fetch(`http://localhost:5000/myList/${user?.displayName}`)
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    setItems(data);
+                })
+        }
+        else {
+            fetch(`http://localhost:5000/myList/${user?.email}`)
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                    setItems(data);
+                })
+        }
+
     }, [user, control])
 
     //delete items
@@ -87,8 +100,8 @@ const MyList = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    if(loading) {
-        return <Loader/>
+    if (loading) {
+        return <Loader />
     }
 
     return (
@@ -127,11 +140,11 @@ const MyList = () => {
                     {/* foot */}
                     <tfoot>
                         <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Job</th>
-                            <th>Favorite Color</th>
-                            <th></th>
+                            <th>Spot Name</th>
+                            <th>Location</th>
+                            <th>Avg. Cost & Visitors/year</th>
+                            <th>Tour Season</th>
+                            <th>Actions</th>
                         </tr>
                     </tfoot>
 

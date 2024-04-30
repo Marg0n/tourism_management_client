@@ -114,7 +114,7 @@ const AddTouristSpot = () => {
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         User Email
-                        <input type="email" className="grow text-primary" placeholder="email@site.com" name="email" defaultValue={user?.email} required/>
+                        <input type="email" className="grow text-primary" placeholder="email@site.com" name="email" defaultValue={user?.email || ''} />
                     </label>
 
                     <label className="form-control lg:col-span-2 col-span-1">
