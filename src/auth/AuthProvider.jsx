@@ -15,9 +15,9 @@ const AuthProvider = ({ children }) => {
 
     // loading
     const [loading, setLoading] = useState(true);
-    console.log(loading)
+    // console.log(loading)
 
-    console.log("user ase?", user)
+    // console.log("user ase?", user)
 
     // social auth Providers
     const googleProvider = new GoogleAuthProvider();

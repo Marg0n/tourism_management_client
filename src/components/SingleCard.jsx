@@ -3,11 +3,11 @@ import { PropTypes } from 'prop-types';
 import { GiTakeMyMoney } from 'react-icons/gi';
 import { TfiRulerPencil } from 'react-icons/tfi';
 import { Link } from 'react-router-dom';
-import Facility from './Facility';
 
 const SingleCard = ({ touristSpot }) => {
 
-    const { id, image, country_Name, tourists_spot_name, location, short_description, totalVisitorsPerYear } = touristSpot;
+    const { _id,  photo, spotName, location, country, cost, season, travelTime, visitor, description } = touristSpot;
+    // console.log(touristSpot)
 
     return (
         <div
@@ -18,7 +18,7 @@ const SingleCard = ({ touristSpot }) => {
             <div className="card shadow-2xl min-h-[80vh] ">
                 <figure className="mx-8 mt-8 p-6 rounded-xl bg-gray-200">
                     <img
-                        src={image}
+                        src={photo}
                         alt="Estate image"
                         className="rounded-xl h-56 w-auto"
                     />
@@ -29,26 +29,27 @@ const SingleCard = ({ touristSpot }) => {
                                 facilities.map((facility, idx) => <Facility key={idx} facility={facility} />)
                             }
                     </div> */}
-                    <div className="h-28 w-full space-y-2 my-8">
-                        <h2 className="text-xl font-semibold text-start font-serif">{estate_title}</h2>
+                    <div className="h-28 w-full space-y-2 my-2">
+                        <h2 className="text-xl font-semibold text-start font-serif">{spotName}</h2>
+                        <p className="text-base">Country : <span className='font-semibold'> {country}</span></p>
                         <p className="text-base">Location : <span className='font-semibold'> {location}</span></p>
-                        <p className="text-base">Segment : <span className='font-semibold'> {segment_name}</span></p>
-                        <p className="text-base">For : <span className='font-semibold'> {status}</span></p>
+                        <p className="text-base">Best time to tour : <span className='font-semibold'> {season} Season</span></p>
                     </div>
 
                     <div className="divider"></div>
 
                     <div className="w-full flex justify-between">
                         <small className="flex gap-2 items-center">
-                            <TfiRulerPencil className='fill-pink-700' />{area}
+                            <TfiRulerPencil className='fill-pink-700' />
+                            Yearly Visitors {visitor}
                         </small>
                         <small className="flex gap-2 items-center">
-                            <GiTakeMyMoney size='18' className='fill-green-700' /> {price}
-
+                            <GiTakeMyMoney size='18' className='fill-green-700' /> 
+                            Avg. budget {cost} TK
                         </small>
                     </div>
                 </div>
-                <Link to={`/estate/${id}`} className='btn m-4 bg-teal-400 hover:bg-blue-500 hover:text-white animate-pulse'>View Property</Link>
+                <Link to={`/estate/${_id}`} className='btn m-4 bg-secondary hover:bg-blue-500 hover:text-white animate-pulse'>View Details</Link>
             </div>
         </div>
     );
