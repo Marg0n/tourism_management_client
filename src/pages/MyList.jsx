@@ -3,6 +3,7 @@ import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
 import MyListCard from "../components/MyListCard";
 import Swal from "sweetalert2";
+import Loader from "../components/Loader";
 
 
 const MyList = () => {
@@ -74,6 +75,21 @@ const MyList = () => {
 
 
     };
+
+    // loader
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false);
+        }, 2000);
+
+        return () => clearTimeout(timer);
+    }, []);
+
+    if(loading) {
+        return <Loader/>
+    }
 
     return (
         <div>
