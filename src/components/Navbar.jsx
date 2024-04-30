@@ -45,6 +45,10 @@ const Navbar = () => {
                     className={({ isActive }) =>
                         isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4 hover:scale-105"}
                     to="/myList">My List</NavLink>
+                <NavLink
+                    className={({ isActive }) =>
+                        isActive ? "text-blue-700 font-bold mr-4" : "font-bold mr-4 hover:scale-105"}
+                    to="/updateProfile">Update Profile</NavLink>
             </>
         }
 

@@ -11,6 +11,7 @@ import PrivateRoute from "../components/PrivateRoute";
 import About from './../components/About';
 import TourSpotDetails from "../pages/TourSpotDetails";
 import UpdateTouristSpot from "../pages/UpdateTouristSpot";
+import UpdateProfile from './../components/UpdateProfile';
 
 
 export const router = createBrowserRouter([
@@ -59,6 +60,10 @@ export const router = createBrowserRouter([
         {
           path: "/about",
           element: <About />,
+        },
+        {
+          path: "/updateProfile",
+          element: <PrivateRoute><UpdateProfile/></PrivateRoute>,
         },
       ],
     },    
