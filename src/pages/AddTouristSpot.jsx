@@ -70,9 +70,16 @@ const AddTouristSpot = () => {
                         Tourists Spot Name
                         <input type="text" className="grow  text-primary" name="spotName" placeholder="Cox's Bazar" />
                     </label>
-                    <label className="input input-bordered flex items-center gap-2">
-                        Country Name
-                        <input type="text" className="grow  text-primary" name="country" placeholder="Bangladesh" />
+                    <label className="form-control w-full ">                        
+                        <select className="select select-bordered" name="country">
+                            <option disabled selected value="">Pick one Country</option>
+                            <option value="Bangladesh">Bangladesh</option>
+                            <option value="Cambodia">Cambodia</option>
+                            <option value="Indonesia">Indonesia</option>
+                            <option value="Malaysia">Malaysia</option>
+                            <option value="Thailand">Thailand</option>
+                            <option value="Vietnam">Vietnam</option>
+                        </select>
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         Location
@@ -107,7 +114,7 @@ const AddTouristSpot = () => {
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         User Email
-                        <input type="email" className="grow text-primary" placeholder="email@site.com" name="email" defaultValue={user?.email} />
+                        <input type="email" className="grow text-primary" placeholder="email@site.com" name="email" defaultValue={user?.email} required/>
                     </label>
 
                     <label className="form-control lg:col-span-2 col-span-1">

@@ -9,6 +9,7 @@ import Home from './../pages/Home';
 import ErrorPage from "../pages/ErrorPage";
 import PrivateRoute from "../components/PrivateRoute";
 import About from './../components/About';
+import TourSpotDetails from "../pages/TourSpotDetails";
 
 
 export const router = createBrowserRouter([
@@ -38,10 +39,22 @@ export const router = createBrowserRouter([
           path: "/allTouristSpot",
           element: <AllTouristSpot />,
           loader: () => fetch('http://localhost:5000/allTouristSpot'),
+          
+        },
+        {
+          path: "/allTouristSpot/:id",
+          element:<PrivateRoute><TourSpotDetails/></PrivateRoute>,
+          // loader: ({params}) => fetch(`http://localhost:5000/allTouristSpot/${params._id}`),
         },
         {
           path: "/myList",
           element:<PrivateRoute><MyList /></PrivateRoute> ,
+          children: [
+            {
+              path: "/myList/:id",
+
+            }
+          ]
         },
         {
           path: "/about",

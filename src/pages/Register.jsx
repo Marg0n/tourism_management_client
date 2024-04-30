@@ -99,7 +99,7 @@ const Register = () => {
     return (
         <div className="flex justify-center items-center my-10">
             <Helmet>
-                <title>Oasis | Registration</title>
+                <title>Horizon | Registration</title>
             </Helmet>
 
             <img

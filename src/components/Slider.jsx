@@ -15,7 +15,7 @@ import { AttentionSeeker } from "react-awesome-reveal";
 const Slider = ({ showSliders }) => {
 
 
-    console.log('southeastAsia', showSliders)
+    // console.log('southeastAsia', showSliders)
 
     const [typeEffect] = useTypewriter({
         words: ['Some Awesome Places!', 'New Places!', 'anywhere in The world!'],
@@ -71,7 +71,7 @@ const Slider = ({ showSliders }) => {
 
                             }}
                         >
-                           <img className='min-h-96 w-full' src={showSlider.photo} alt="" />
+                           <img className='h-96 w-full' src={showSlider.photo} alt="" />
                             <div className='absolute bottom-4 right-4 p-6 text-primary font-serif text-right'>
                                 <div className="text-3xl font-bold">
                                     {showSlider.country}

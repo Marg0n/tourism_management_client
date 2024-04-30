@@ -1,0 +1,83 @@
+import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router-dom";
+// import { toast } from "react-toastify";
+
+
+const TourSpotDetails = () => {
+
+    // const spotDetails = useLoaderData()
+    const { id } = useParams();
+
+
+    const [tourSpot, setTourSpot] = useState({});
+    
+    useEffect(() => {
+        fetch(`http://localhost:5000/allTouristSpot/${id}`)
+        .then((res) => res.json())
+        .then(data => {
+            setTourSpot(data);
+            console.log(data);
+        })
+    }, [id]);
+
+    const {
+        // _id, 
+        photo, spotName, location, country, cost, season,
+        travelTime, 
+        visitor, 
+        // email,
+        name,
+        description 
+    } = tourSpot;
+
+
+    return (
+        <div className="card lg:card-side bg-base-100 shadow-2xl border-2 ">
+            <Helmet>
+                <title>Horizon | Tour Spot Details</title>
+            </Helmet>
+
+            <figure className="object-cover w-1/2">
+                <img src={photo} className="h-full"/>
+            </figure>
+            <div className="card-body w-1/2">
+                <h2 className="card-title text-2xl font-bold font-serif">{ }</h2>
+                <p className="text-base font-serif">{ }</p>
+                <div className="min-h-40 w-full space-y-2 mt-4 font-mono">
+
+                    <p className="text-base">Spot Name : <span className='font-semibold'>
+                        {spotName }
+                    </span></p>
+                    <p className="text-base">Location : <span className='font-semibold'>
+                        { location}
+                    </span></p>
+                    <p className="text-base">Country : <span className='font-semibold'>
+                        { country}
+                    </span></p>
+                    <p className="text-base">Avg. Cost : <span className='font-semibold'>
+                        { cost} Tk
+                    </span></p>
+                    <p className="text-base">Tour Season : <span className='font-semibold'>
+                        { season}
+                    </span></p>
+                    <p className="text-base">Visitor per Year : <span className='font-semibold'>
+                        { visitor}
+                    </span></p>
+                    <p className="text-base">Travel Time : <span className='font-semibold'>
+                        { travelTime }
+                    </span></p>
+                    <p className="text-base">Description : <span className='font-semibold'>
+                        {description }
+                    </span></p>
+                    <p className="text-base">Added By : <span className='font-semibold'>
+                        {name }
+                    </span></p>
+                </div>
+                
+            </div>
+        </div>
+    );
+};
+
+export default TourSpotDetails;
