@@ -1,9 +1,9 @@
-import { Helmet } from "react-helmet-async";
-import useAuth from "../hooks/useAuth";
 import { useEffect, useState } from "react";
-import MyListCard from "../components/MyListCard";
+import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
 import Loader from "../components/Loader";
+import MyListCard from "../components/MyListCard";
+import useAuth from "../hooks/useAuth";
 
 
 const MyList = () => {
@@ -18,8 +18,8 @@ const MyList = () => {
 
     // DB connection GET
     useEffect(() => {
-        if (user?.displayName && user?.email == '' || user?.email == 'null '  ) {
-            fetch(`http://localhost:5000/myList/${user?.displayName}`)
+        if (user?.displayName && user?.email == '' || user?.email == 'null ') {
+            fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/myList/${user?.displayName}`)
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);
@@ -27,7 +27,7 @@ const MyList = () => {
                 })
         }
         else {
-            fetch(`http://localhost:5000/myList/${user?.email}`)
+            fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/myList/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);
@@ -57,7 +57,7 @@ const MyList = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 //delete
-                fetch(`http://localhost:5000/delete/${id}`, {
+                fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/delete/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

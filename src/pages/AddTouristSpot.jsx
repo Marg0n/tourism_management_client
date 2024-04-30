@@ -1,6 +1,6 @@
 import { Helmet } from "react-helmet-async";
+import Swal from 'sweetalert2';
 import useAuth from "../hooks/useAuth";
-import Swal from 'sweetalert2'
 
 
 const AddTouristSpot = () => {
@@ -29,21 +29,21 @@ const AddTouristSpot = () => {
         console.log(newTouristSpot)
 
         //send data to server
-        fetch('http://localhost:5000/addTouristSpot', {
+        fetch('https://tourism-management-server-npieer5uj-margons-projects.vercel.app/addTouristSpot', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(newTouristSpot)
         })
             .then(res => res.json())
-            .then(data => { 
+            .then(data => {
                 // console.log(data); 
-                if(data?.insertedId){
+                if (data?.insertedId) {
                     Swal.fire({
                         title: 'Success!',
                         text: 'Added a new Tourist Spot! 🎉',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                      }).then(() => {
+                    }).then(() => {
                         form.reset(); // Reset the form fields
                     });
                 }
@@ -70,7 +70,7 @@ const AddTouristSpot = () => {
                         Tourists Spot Name
                         <input type="text" className="grow  text-primary" name="spotName" placeholder="Cox's Bazar" />
                     </label>
-                    <label className="form-control w-full ">                        
+                    <label className="form-control w-full ">
                         <select className="select select-bordered" name="country">
                             <option disabled selected value="">Pick one Country</option>
                             <option value="Bangladesh">Bangladesh</option>

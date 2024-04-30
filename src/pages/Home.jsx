@@ -1,12 +1,12 @@
-import { Helmet } from "react-helmet-async";
-import Slider from "../components/Slider";
 import { useEffect, useState } from "react";
-import Loader from "../components/Loader";
-import TouristSpotCard from "../components/TouristSpotCard";
-import { useLoaderData } from "react-router-dom";
-import SingleCard from "../components/SingleCard";
-import { useTypewriter, Cursor } from 'react-simple-typewriter'
 import { AttentionSeeker } from "react-awesome-reveal";
+import { Helmet } from "react-helmet-async";
+import { useLoaderData } from "react-router-dom";
+import { Cursor, useTypewriter } from 'react-simple-typewriter';
+import Loader from "../components/Loader";
+import SingleCard from "../components/SingleCard";
+import Slider from "../components/Slider";
+import TouristSpotCard from "../components/TouristSpotCard";
 
 
 const Home = () => {
@@ -18,7 +18,7 @@ const Home = () => {
     const [countries, setCountries] = useState({});
 
     useEffect(() => {
-        fetch(`http://localhost:5000/countries`)
+        fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/countries`)
             .then((res) => res.json())
             .then(data => {
                 setCountries(data);

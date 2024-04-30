@@ -1,9 +1,9 @@
-import { Helmet } from "react-helmet-async";
-import useAuth from "../hooks/useAuth";
-import Swal from 'sweetalert2'
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useNavigate, useParams } from "react-router-dom";
+import Swal from 'sweetalert2';
 import Loader from "../components/Loader";
+import useAuth from "../hooks/useAuth";
 
 const UpdateTouristSpot = () => {
 
@@ -11,15 +11,15 @@ const UpdateTouristSpot = () => {
 
     const { id } = useParams();
 
-     // Navigation
-     const navigate = useNavigate();
+    // Navigation
+    const navigate = useNavigate();
 
 
     const [tourSpot, setTourSpot] = useState({});
 
     //get data to server
     useEffect(() => {
-        fetch(`http://localhost:5000/allTouristSpot/${id}`)
+        fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/allTouristSpot/${id}`)
             .then((res) => res.json())
             .then(data => {
                 setTourSpot(data);
@@ -61,21 +61,21 @@ const UpdateTouristSpot = () => {
 
 
 
-        fetch(`http://localhost:5000/update/${id}`, {
+        fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/update/${id}`, {
             method: 'PUT',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(updateSpot)
         })
             .then(res => res.json())
-            .then(data => { 
+            .then(data => {
                 // console.log(data); 
-                if(data?.modifiedCount>0){
+                if (data?.modifiedCount > 0) {
                     Swal.fire({
                         title: 'Successfully Updated!',
                         text: 'Updated the Tourist Spot! 🎉',
                         icon: 'success',
                         confirmButtonText: 'Cool'
-                      }).then(() => {
+                    }).then(() => {
                         navigate('/myList'); // navigate
                     });
                 }
@@ -93,8 +93,8 @@ const UpdateTouristSpot = () => {
         return () => clearTimeout(timer);
     }, []);
 
-    if(loading) {
-        return <Loader/>
+    if (loading) {
+        return <Loader />
     }
 
 
@@ -112,11 +112,11 @@ const UpdateTouristSpot = () => {
                 <div className="grid lg:grid-cols-2 grid-cols-1 justify-center items-center gap-12 font-serif">
                     <label className="input input-bordered flex items-center gap-2">
                         Image URL
-                        <input type="text" className="grow  text-primary" name="photo" placeholder="https://pthoto.com/600" defaultValue={photo}/>
+                        <input type="text" className="grow  text-primary" name="photo" placeholder="https://pthoto.com/600" defaultValue={photo} />
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         Tourists Spot Name
-                        <input type="text" className="grow  text-primary" name="spotName" placeholder="Cox's Bazar" defaultValue={spotName}/>
+                        <input type="text" className="grow  text-primary" name="spotName" placeholder="Cox's Bazar" defaultValue={spotName} />
                     </label>
                     <label className="form-control w-full ">
                         <select className="select select-bordered" name="country" defaultValue={country}>
@@ -131,11 +131,11 @@ const UpdateTouristSpot = () => {
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         Location
-                        <input type="text" className="grow  text-primary" name="location" placeholder="Chittagong" defaultValue={location}/>
+                        <input type="text" className="grow  text-primary" name="location" placeholder="Chittagong" defaultValue={location} />
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         Average Cost (TK)
-                        <input type="text" className="grow  text-primary" name="cost" placeholder="8000" defaultValue={cost}/>
+                        <input type="text" className="grow  text-primary" name="cost" placeholder="8000" defaultValue={cost} />
                     </label>
                     <label className="form-control w-full ">
                         <select className="select select-bordered" name="season" defaultValue={season}>
@@ -150,11 +150,11 @@ const UpdateTouristSpot = () => {
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         Travel Time (Days)
-                        <input type="text" className="grow  text-primary" name="travelTime" placeholder="7" defaultValue={travelTime}/>
+                        <input type="text" className="grow  text-primary" name="travelTime" placeholder="7" defaultValue={travelTime} />
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         Total Visitors Per Year
-                        <input type="text" className="grow  text-primary" name='visitor' placeholder="10000" defaultValue={visitor}/>
+                        <input type="text" className="grow  text-primary" name='visitor' placeholder="10000" defaultValue={visitor} />
                     </label>
                     <label className="input input-bordered flex items-center gap-2">
                         User Name
