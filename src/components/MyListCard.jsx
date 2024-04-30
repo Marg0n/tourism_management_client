@@ -6,7 +6,7 @@ import 'animate.css';
 import { Tooltip } from "react-tooltip";
 import 'react-tooltip/dist/react-tooltip.css';
 
-const MyListCard = ({ touristSpot }) => {
+const MyListCard = ({ touristSpot,handleDelete }) => {
 
    
 
@@ -18,6 +18,8 @@ const MyListCard = ({ touristSpot }) => {
         // description 
     } = touristSpot;
     // console.log(touristSpot)
+
+    
 
     return (
 
@@ -49,6 +51,7 @@ const MyListCard = ({ touristSpot }) => {
 
                 <Link to={`/allTouristSpot/${_id}`} className='btn bg-secondary hover:bg-blue-500 hover:text-white animate-pulse btn-xs'>View Details</Link>
                 <button
+                    onClick={()=>handleDelete(_id)}
                     data-tooltip-id="delete-tooltip"
                     data-tooltip-content="Delete"
                     className='btn btn-neutral hover:btn-error btn-xs  animate__animated animate__tada animate__infinite'>
@@ -71,6 +74,7 @@ const MyListCard = ({ touristSpot }) => {
 
 MyListCard.propTypes = {
     touristSpot: PropTypes.object,
+    handleDelete: PropTypes.func,
 }
 
 

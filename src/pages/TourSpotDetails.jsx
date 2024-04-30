@@ -17,7 +17,7 @@ const TourSpotDetails = () => {
         .then((res) => res.json())
         .then(data => {
             setTourSpot(data);
-            console.log(data);
+            // console.log(data);
         })
     }, [id]);
 

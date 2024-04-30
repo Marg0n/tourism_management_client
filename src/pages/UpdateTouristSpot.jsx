@@ -57,7 +57,7 @@ const UpdateTouristSpot = () => {
 
         const updateSpot = { name, email, photo, spotName, country, location, cost, season, travelTime, visitor, description };
 
-        console.log(updateSpot)
+        // console.log(updateSpot)
 
 
 
