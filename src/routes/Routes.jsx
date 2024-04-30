@@ -12,6 +12,7 @@ import About from './../components/About';
 import TourSpotDetails from "../pages/TourSpotDetails";
 import UpdateTouristSpot from "../pages/UpdateTouristSpot";
 import UpdateProfile from './../components/UpdateProfile';
+import CountryDetails from "../pages/CountryDetails";
 
 
 export const router = createBrowserRouter([
@@ -64,6 +65,10 @@ export const router = createBrowserRouter([
         {
           path: "/updateProfile",
           element: <PrivateRoute><UpdateProfile/></PrivateRoute>,
+        },
+        {
+          path: "/country/:id",
+          element: <CountryDetails/>,
         },
       ],
     },    

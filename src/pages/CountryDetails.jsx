@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 // import { toast } from "react-toastify";
 
 
-const CountryDetailes = () => {
+const CountryDetails = () => {
 
     // const spotDetails = useLoaderData()
     const { id } = useParams();
@@ -17,15 +17,15 @@ const CountryDetailes = () => {
         .then((res) => res.json())
         .then(data => {
             setTourSpot(data);
-            // console.log(data);
+            console.log(data);
         })
     }, [id]);
 
     
     const { 
-        _id, image, spotName, location, country, season, 
-        // visitor, 
-        // description 
+        image, spotName, location, country, season, 
+        visitor, 
+        description 
     } = tourSpot;
 
 
@@ -36,7 +36,7 @@ const CountryDetailes = () => {
             </Helmet>
 
             <figure className="object-contain w-1/2">
-                <img src={photo} className="h-full max-h-dvh "/>
+                <img src={image} className="h-full max-h-dvh "/>
             </figure>
             <div className="card-body w-1/2">
                 <h2 className="card-title text-2xl font-bold font-serif bgred">{spotName }</h2>
@@ -52,23 +52,14 @@ const CountryDetailes = () => {
                     <p className="text-base">Country : <span className='font-semibold'>
                         { country}
                     </span></p>
-                    <p className="text-base">Avg. Cost : <span className='font-semibold'>
-                        { cost} Tk
-                    </span></p>
                     <p className="text-base">Tour Season : <span className='font-semibold'>
                         { season}
                     </span></p>
                     <p className="text-base">Visitor per Year : <span className='font-semibold'>
                         { visitor}
                     </span></p>
-                    <p className="text-base">Travel Time : <span className='font-semibold'>
-                        { travelTime }
-                    </span></p>
                     <p className="text-base">Description : <span className='font-semibold'>
                         {description }
-                    </span></p>
-                    <p className="text-base">Added By : <span className='font-semibold'>
-                        {name }
                     </span></p>
                 </div>
                 
@@ -77,4 +68,4 @@ const CountryDetailes = () => {
     );
 };
 
-export default CountryDetailes;
+export default CountryDetails;
