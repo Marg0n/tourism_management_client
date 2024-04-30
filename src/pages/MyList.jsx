@@ -28,13 +28,7 @@ const MyList = () => {
                 <title>Horizon | My List</title>
             </Helmet>
             
-            {/* <div className=" my-12">
-                {
-                    items.map((touristSpot, index) => {
-                        return <MyListCard key={index} touristSpot={touristSpot}/>
-                    })
-                }
-            </div> */}
+            
             <div className="overflow-x-auto my-12">
                 <table className="table">
                     {/* head */}
@@ -43,7 +37,7 @@ const MyList = () => {
                             
                             <th>Spot Name</th>
                             <th>Location</th>
-                            <th>Avg. Cost & Visitors</th>
+                            <th>Avg. Cost & Visitors/year</th>
                             <th>Tour Season</th>
                             <th>Actions</th>
                         </tr>

@@ -38,12 +38,12 @@ const TourSpotDetails = () => {
                 <title>Horizon | Tour Spot Details</title>
             </Helmet>
 
-            <figure className="object-cover w-1/2">
-                <img src={photo} className="h-full"/>
+            <figure className="object-contain w-1/2">
+                <img src={photo} className="h-full max-h-dvh "/>
             </figure>
             <div className="card-body w-1/2">
-                <h2 className="card-title text-2xl font-bold font-serif">{ }</h2>
-                <p className="text-base font-serif">{ }</p>
+                <h2 className="card-title text-2xl font-bold font-serif bgred">{spotName }</h2>
+                <p className="text-base font-serif">{location }, {country}</p>
                 <div className="min-h-40 w-full space-y-2 mt-4 font-mono">
 
                     <p className="text-base">Spot Name : <span className='font-semibold'>

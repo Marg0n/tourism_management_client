@@ -10,6 +10,7 @@ import ErrorPage from "../pages/ErrorPage";
 import PrivateRoute from "../components/PrivateRoute";
 import About from './../components/About';
 import TourSpotDetails from "../pages/TourSpotDetails";
+import UpdateTouristSpot from "../pages/UpdateTouristSpot";
 
 
 export const router = createBrowserRouter([
@@ -49,12 +50,11 @@ export const router = createBrowserRouter([
         {
           path: "/myList",
           element:<PrivateRoute><MyList /></PrivateRoute> ,
-          children: [
-            {
-              path: "/myList/:id",
-
-            }
-          ]
+          
+        },
+        {
+          path: "/myList/:id",
+          element: <UpdateTouristSpot/>
         },
         {
           path: "/about",

@@ -1,18 +1,20 @@
 
 import { PropTypes } from 'prop-types';
 import { Link } from 'react-router-dom';
-import useAuth from '../hooks/useAuth';
 import { MdDeleteForever } from 'react-icons/md';
 import 'animate.css';
+import { Tooltip } from "react-tooltip";
+import 'react-tooltip/dist/react-tooltip.css';
 
 const MyListCard = ({ touristSpot }) => {
 
-    const { user } = useAuth();
+   
 
     const {
         _id, photo, spotName, location, country, cost, season,
         // travelTime, 
-        visitor, email
+        visitor, 
+        // email
         // description 
     } = touristSpot;
     // console.log(touristSpot)
@@ -39,7 +41,7 @@ const MyListCard = ({ touristSpot }) => {
                 approximate {cost} Tk
                 <br />
                 <span className="badge badge-secondary badge-sm">
-                    approximate {visitor}
+                    approximate {visitor} persons
                 </span>
             </td>
             <td>{season}</td>
@@ -47,15 +49,21 @@ const MyListCard = ({ touristSpot }) => {
 
                 <Link to={`/allTouristSpot/${_id}`} className='btn bg-secondary hover:bg-blue-500 hover:text-white animate-pulse btn-xs'>View Details</Link>
                 <button
+                    data-tooltip-id="delete-tooltip"
+                    data-tooltip-content="Delete"
                     className='btn btn-neutral hover:btn-error btn-xs  animate__animated animate__tada animate__infinite'>
                     <MdDeleteForever
                         size={20}
                         className='text-primary group-hover:text-secondary'
                     />
                 </button>
+                <Tooltip id="delete-tooltip" />
                 <Link
                     to={`/myList/${_id}`}
+                    data-tooltip-id="update-tooltip"
+                    data-tooltip-content="Update"
                     className='btn btn-neutral hover:btn-info btn-xs animate__animated  animate__jello animate__infinite'>📝</Link>
+                    <Tooltip id="update-tooltip" />
             </th>
         </tr>
     );
