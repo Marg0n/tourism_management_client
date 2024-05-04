@@ -19,7 +19,7 @@ const MyList = () => {
     // DB connection GET
     useEffect(() => {
         if (user?.displayName && user?.email == '' || user?.email == 'null ') {
-            fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/myList/${user?.displayName}`)
+            fetch(`https://tourism-management-server-roan.vercel.app/myList/${user?.displayName}`)
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);
@@ -27,7 +27,7 @@ const MyList = () => {
                 })
         }
         else {
-            fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/myList/${user?.email}`)
+            fetch(`https://tourism-management-server-roan.vercel.app/myList/${user?.email}`)
                 .then(res => res.json())
                 .then(data => {
                     // console.log(data);
@@ -57,7 +57,7 @@ const MyList = () => {
         }).then((result) => {
             if (result.isConfirmed) {
                 //delete
-                fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/delete/${id}`, {
+                fetch(`https://tourism-management-server-roan.vercel.app/delete/${id}`, {
                     method: 'DELETE',
                 })
                     .then(res => res.json())

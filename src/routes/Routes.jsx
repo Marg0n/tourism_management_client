@@ -24,7 +24,7 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        loader: () => fetch('https://tourism-management-server-npieer5uj-margons-projects.vercel.app/allTouristSpot'),
+        loader: () => fetch('https://tourism-management-server-roan.vercel.app/allTouristSpot'),
       },
       {
         path: "/login",
@@ -41,13 +41,13 @@ export const router = createBrowserRouter([
       {
         path: "/allTouristSpot",
         element: <AllTouristSpot />,
-        loader: () => fetch('https://tourism-management-server-npieer5uj-margons-projects.vercel.app/allTouristSpot'),
+        loader: () => fetch('https://tourism-management-server-roan.vercel.app/allTouristSpot'),
 
       },
       {
         path: "/allTouristSpot/:id",
         element: <PrivateRoute><TourSpotDetails /></PrivateRoute>,
-        // loader: ({params}) => fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/allTouristSpot/${params._id}`),
+        // loader: ({params}) => fetch(`https://tourism-management-server-roan.vercel.app/allTouristSpot/${params._id}`),
       },
       {
         path: "/myList",

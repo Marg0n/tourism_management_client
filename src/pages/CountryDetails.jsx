@@ -13,7 +13,7 @@ const CountryDetails = () => {
     const [tourSpot, setTourSpot] = useState({});
 
     useEffect(() => {
-        fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/country/${id}`)
+        fetch(`https://tourism-management-server-roan.vercel.app/country/${id}`)
             .then((res) => res.json())
             .then(data => {
                 setTourSpot(data);

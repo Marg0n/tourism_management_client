@@ -13,7 +13,7 @@ const TourSpotDetails = () => {
     const [tourSpot, setTourSpot] = useState({});
 
     useEffect(() => {
-        fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/allTouristSpot/${id}`)
+        fetch(`https://tourism-management-server-roan.vercel.app/allTouristSpot/${id}`)
             .then((res) => res.json())
             .then(data => {
                 setTourSpot(data);

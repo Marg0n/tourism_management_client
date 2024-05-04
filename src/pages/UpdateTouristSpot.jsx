@@ -19,7 +19,7 @@ const UpdateTouristSpot = () => {
 
     //get data to server
     useEffect(() => {
-        fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/allTouristSpot/${id}`)
+        fetch(`https://tourism-management-server-roan.vercel.app/allTouristSpot/${id}`)
             .then((res) => res.json())
             .then(data => {
                 setTourSpot(data);
@@ -61,7 +61,7 @@ const UpdateTouristSpot = () => {
 
 
 
-        fetch(`https://tourism-management-server-npieer5uj-margons-projects.vercel.app/update/${id}`, {
+        fetch(`https://tourism-management-server-roan.vercel.app/update/${id}`, {
             method: 'PUT',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(updateSpot)

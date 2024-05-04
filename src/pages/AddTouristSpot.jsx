@@ -29,7 +29,7 @@ const AddTouristSpot = () => {
         console.log(newTouristSpot)
 
         //send data to server
-        fetch('https://tourism-management-server-npieer5uj-margons-projects.vercel.app/addTouristSpot', {
+        fetch('https://tourism-management-server-roan.vercel.app/addTouristSpot', {
             method: 'POST',
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(newTouristSpot)
